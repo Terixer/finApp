@@ -27,7 +27,7 @@
       }
       &:hover {
         background-color: $dropdown-hover-bg;
-        color: $white;
+        color: theme-color(primary);
       }
     }
   }

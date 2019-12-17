@@ -11,7 +11,7 @@
             <div class="col-lg-4 mx-auto">
               <div class="auth-form-light text-left p-5">
                 <div class="brand-logo">
-                  <h3>FinApp</h3>
+                  <img src="{{asset('img/logo/logo.png')}}">
                 </div>
                   {% if error %}
                     <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
