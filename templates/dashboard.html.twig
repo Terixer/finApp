@@ -52,61 +52,54 @@
                 <hr/ class="mt-4 d-none d-lg-block">
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../../index.html">
+              <a class="nav-link" href="{{ path('dashboard') }}">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                <span class="menu-title">Basic UI Elements</span>
-                <i class="menu-arrow"></i>
-                <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+              <a class="nav-link" href="#">
+                <span class="menu-title">Okresy rozliczeniowe</span>
+                <i class="mdi mdi-arrange-bring-to-front menu-icon"></i>
               </a>
-              <div class="collapse" id="ui-basic">
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span class="menu-title">Przychody</span>
+                <i class="mdi mdi-battery-charging-60 menu-icon"></i>
+              </a>
+            </li>
+              <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#expense-pages" aria-expanded="false" aria-controls="expense-pages">
+                <span class="menu-title">Wydatki</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-barcode-scan menu-icon"></i>
+              </a>
+              <div class="collapse" id="expense-pages">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buttons.html">Buttons</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/typography.html">Typography</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="#"> Planowane </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="#"> Realne </a></li>
+                  
                 </ul>
               </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../../pages/icons/mdi.html">
-                <span class="menu-title">Icons</span>
-                <i class="mdi mdi-contacts menu-icon"></i>
+           <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span class="menu-title">Cele</span>
+                <i class="mdi mdi-trophy-outline menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../../pages/forms/basic_elements.html">
-                <span class="menu-title">Forms</span>
-                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../../pages/charts/chartjs.html">
-                <span class="menu-title">Charts</span>
-                <i class="mdi mdi-chart-bar menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../../pages/tables/basic-table.html">
-                <span class="menu-title">Tables</span>
-                <i class="mdi mdi-table-large menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages">
-                <span class="menu-title">Sample Pages</span>
+              <a class="nav-link" data-toggle="collapse" href="#dictionary-pages" aria-expanded="false" aria-controls="dictionary-pages">
+                <span class="menu-title">Słowniki</span>
                 <i class="menu-arrow"></i>
-                <i class="mdi mdi-medical-bag menu-icon"></i>
+                <i class="mdi mdi-view-quilt menu-icon"></i>
               </a>
-              <div class="collapse" id="general-pages">
+              <div class="collapse" id="dictionary-pages">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="../../pages/samples/blank-page.html"> Blank Page </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../../pages/samples/login.html"> Login </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../../pages/samples/register.html"> Register </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../../pages/samples/error-404.html"> 404 </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../../pages/samples/error-500.html"> 500 </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="#"> Typy przychodów </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="#"> Typy wydatków </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="#"> Konta </a></li>
                 </ul>
               </div>
             </li>
@@ -114,7 +107,7 @@
               <span class="nav-link">
                 <div class="border-bottom">
                 </div>
-                <button class="btn btn-block btn-lg btn-gradient-primary mt-4">+ Add a project</button>
+                <button class="btn btn-block btn-lg btn-gradient-primary mt-4">+Realny wydatek</button>
               </span>
             </li>
           </ul>
