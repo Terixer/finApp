@@ -3,41 +3,45 @@
 {% block title %}Okresy rozliczeniowe{% endblock %}
 
 {% block content %}
-    <table class="table">
-        <thead>
+ <div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+        <a href="{{ path('period_new') }}" class="btn btn-gradient-success btn-fw mb-4">Dodaj nowy</a>
+        <table class="table table-hover">
+            <thead>
             <tr>
-                <th>CreatedAt</th>
-                <th>Id</th>
-                <th>Name</th>
-                <th>DateFrom</th>
-                <th>DateTo</th>
-                <th>CreatedBy</th>
-                <th>CreatedAt</th>
-                <th>actions</th>
+                <th>#</th>
+                <th>Nazwa</th>
+                <th>Okres od</th>
+                <th>Okres do</th>
+                <th style="width:20%">Progress</th>
+                <th style="width:20%">Akcje</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for period in periods %}
+            </thead>
+            <tbody>
+             {% for period in periods %}
             <tr>
-                <td>{{ period.createdAt ? period.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ period.id }}</td>
                 <td>{{ period.name }}</td>
-                <td>{{ period.dateFrom ? period.dateFrom|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ period.dateTo ? period.dateTo|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ period.createdBy.email }}</td>
-                <td>{{ period.createdAt | date('Y-m-d H:i:s') }}</td>
+                <td>{{ period.dateFrom ? period.dateFrom|date('Y-m-d  h:i') : '' }}</td>
+                <td>{{ period.dateTo ? period.dateTo|date('Y-m-d  h:i') : '' }}</td>
+                <td>
+                    {{ include('parts/_progress_bar.html.twig', {'progress': dateProgress(period.dateFrom,period.dateTo)}) }}
+                </td>
                 <td>
                     <a href="{{ path('period_show', {'id': period.id}) }}">show</a>
                     <a href="{{ path('period_edit', {'id': period.id}) }}">edit</a>
                 </td>
             </tr>
-        {% else %}
+            {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="6">Brak okresów rozliczeniowych</td>
             </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>
 
-    <a href="{{ path('period_new') }}">Create new</a>
 {% endblock %}

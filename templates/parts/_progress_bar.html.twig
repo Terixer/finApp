@@ -1,0 +1,13 @@
+{% set progressColor = '' %}
+{% if progress < 20 %}
+    {% set progressColor = 'warning' %}
+{% elseif progress >= 20 and progress < 60 %}
+    {% set progressColor = 'info' %}
+{% elseif progress >= 60 and progress < 100 %}
+    {% set progressColor = 'primary' %}
+{% else %}
+    {% set progressColor = 'success' %}
+{% endif %}
+ <div class="progress">
+    <div title="{{progress}}%" class="progress-bar bg-{{progressColor}}" role="progressbar" style="width: {{progress}}%"></div>
+</div>
