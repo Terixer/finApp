@@ -10,8 +10,10 @@ require('../css/app.scss');
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 // const $ = require('jquery');
+require("jquery");
 require("../vendors/js/vendor.bundle.base.js");
 require("./template/off-canvas.js");
+require("./template/hoverable-collapse.js");
 require("./template/misc.js");
 
 
