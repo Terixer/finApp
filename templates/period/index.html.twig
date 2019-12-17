@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Period index{% endblock %}
+
+{% block body %}
+    <h1>Period index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>CreatedAt</th>
+                <th>Id</th>
+                <th>Name</th>
+                <th>DateFrom</th>
+                <th>DateTo</th>
+                <th>CreatedBy</th>
+                <th>CreatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for period in periods %}
+            <tr>
+                <td>{{ period.createdAt ? period.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ period.id }}</td>
+                <td>{{ period.name }}</td>
+                <td>{{ period.dateFrom ? period.dateFrom|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ period.dateTo ? period.dateTo|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ period.createdBy.email }}</td>
+                <td>{{ period.createdAt | date('Y-m-d H:i:s') }}</td>
+                <td>
+                    <a href="{{ path('period_show', {'id': period.id}) }}">show</a>
+                    <a href="{{ path('period_edit', {'id': period.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('period_new') }}">Create new</a>
+{% endblock %}
