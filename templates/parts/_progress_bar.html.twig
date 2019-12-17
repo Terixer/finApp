@@ -8,6 +8,6 @@
 {% else %}
     {% set progressColor = 'success' %}
 {% endif %}
- <div class="progress">
-    <div title="{{progress}}%" class="progress-bar bg-{{progressColor}}" role="progressbar" style="width: {{progress}}%"></div>
+ <div class="{% if progress == 0 %} bg-danger {% endif %} progress" data-toggle="tooltip" data-placement="bottom" title="{{progress}}%">
+    <div  class="progress-bar bg-{{progressColor}}" role="progressbar" style="width: {{progress}}%"></div>
 </div>
