@@ -1,10 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'period/period_base.html.twig' %}
 
-{% block title %}Edit Period{% endblock %}
+{% block title %}Edytuj okres rozliczeniowy{% endblock %}
 
-{% block body %}
-    <h1>Edit Period</h1>
-
+{% block content %}
     {{ include('period/_form.html.twig', {'button_label': 'Update'}) }}
 
     <a href="{{ path('period_index') }}">back to list</a>
