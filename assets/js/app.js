@@ -12,7 +12,7 @@ require('../css/app.scss');
 require('jquery')
 require('popper.js')
 require('bootstrap')
-require("../vendors/js/vendor.bundle.base.js");
+require('perfect-scrollbar')
 require("./template/off-canvas.js");
 require("./template/hoverable-collapse.js");
 require("./template/misc.js");
