@@ -1,13 +1,15 @@
-<div class="col-md-8 grid-margin stretch-card">
-	<div class="card">
-		<div class="card-body">
-			<h4 class="card-title">{{title}}</h4>
-			<p class="card-description"></p>
-			{{ form_start(form) }}
-			{{ form_widget(form) }}
-			{{ include('parts/form/buttons/_submit.html.twig') }}
-			{{ include('parts/form/buttons/_back.html.twig',{'path':index_path})}}
-			{{ form_end(form) }}
-		</div>
-	</div>
-</div>
+{% embed('parts/elements/_card.html.twig') %}
+	{% block grid %}
+		col-lg-8
+	{% endblock %}
+	{% block card_title %}
+		{{title}}
+	{% endblock %}
+	{% block card_content %}
+		{{ form_start(form) }}
+		{{ form_widget(form) }}
+		{{ include('parts/form/buttons/_submit.html.twig') }}
+		{{ include('parts/form/buttons/_back.html.twig',{'path':index_path})}}
+		{{ form_end(form) }}
+	{% endblock %}
+{% endembed %}

@@ -2,52 +2,55 @@
 
 {% block content %}
 	<div class="row">
-		<div class="col-lg-6 grid-margin stretch-card">
-			<div class="card">
-				<div class="card-body">
-					<h4 class="card-title">Podgląd</h4>
-					<table class="table table-striped">
-						<tbody>
-							<tr>
-								<th>#</th>
-								<td>{{ period.id }}</td>
-							</tr>
-							<tr>
-								<th>Nazwa</th>
-								<td>{{ period.name }}</td>
-							</tr>
-							<tr>
-								<th>Okres od</th>
-								<td>{{ period.dateFrom ? period.dateFrom|date('Y-m-d H:i:s') : '' }}</td>
-							</tr>
-							<tr>
-								<th>Okres do</th>
-								<td>{{ period.dateTo ? period.dateTo|date('Y-m-d H:i:s') : '' }}</td>
-							</tr>
-							<tr>
-								<th>Utowrzono dnia:</th>
-								<td>{{ period.createdAt ? period.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-							</tr>
-							<tr>
-								<th>Utworzono przez:</th>
-								<td>{{ period.createdBy.email }}</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-6 grid-margin stretch-card">
-			<div class="card">
-				<div class="card-body">
-					<h4 class="card-title">Statystyki</h4>
-				</div>
-			</div>
-		</div>
+		{% embed('parts/elements/_card.html.twig') %}
+			{% block grid %}
+				col-lg-6
+			{% endblock %}
+			{% block card_title %}
+				Przegląd okresu rozliczeniowego
+			{% endblock %}
+			{% block card_content %}
+				<table class="table table-striped">
+					<tbody>
+						<tr>
+							<th>#</th>
+							<td>{{ period.id }}</td>
+						</tr>
+						<tr>
+							<th>Nazwa</th>
+							<td>{{ period.name }}</td>
+						</tr>
+						<tr>
+							<th>Okres od</th>
+							<td>{{ period.dateFrom ? period.dateFrom|date('Y-m-d H:i:s') : '' }}</td>
+						</tr>
+						<tr>
+							<th>Okres do</th>
+							<td>{{ period.dateTo ? period.dateTo|date('Y-m-d H:i:s') : '' }}</td>
+						</tr>
+						<tr>
+							<th>Utowrzono dnia:</th>
+							<td>{{ period.createdAt ? period.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+						</tr>
+						<tr>
+							<th>Utworzono przez:</th>
+							<td>{{ period.createdBy.email }}</td>
+						</tr>
+					</tbody>
+				</table>
+			{% endblock %}
+		{% endembed %}
+		{% embed('parts/elements/_card.html.twig') %}
+			{% block grid %}
+				col-lg-6
+			{% endblock %}
+			{% block card_title %}
+				Statystyki
+			{% endblock %}
+			{% block card_content %}{% endblock %}
+		{% endembed %}
 	</div>
 
-
-	<a href="{{path('period_index')}}" class="btn btn-light">Wróć do listy</a>
-	<a href="{{ path('period_edit', {'id': period.id}) }}" class="btn btn-info">Edytuj</a>
-
+	{{ include('parts/form/buttons/_submit.html.twig') }}
+	{{ include('parts/form/buttons/_back.html.twig',{'path':path('period_index')})}}
 {% endblock %}
