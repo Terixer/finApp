@@ -1,0 +1,9 @@
+{% extends 'dictionary/_base.html.twig' %}
+
+{% block content %}
+	{{ include('parts/form/primary_form.html.twig',{
+        'title': "Dodaj "~dictionary_title,
+        'form':form,
+        'index_path':path("dictionary_" ~ dictionary_name ~ "_index")
+	})}}
+{% endblock %}
