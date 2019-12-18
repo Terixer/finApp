@@ -28,18 +28,19 @@
 								<td>{{ period.dateFrom ? period.dateFrom|date('Y-m-d  h:i') : '' }}</td>
 								<td>{{ period.dateTo ? period.dateTo|date('Y-m-d  h:i') : '' }}</td>
 								<td>
-									{{ include('parts/_progress_bar.html.twig', {'progress': dateProgress(period.dateFrom,period.dateTo)}) }}
+									{{ include('parts/elements/_progress_bar.html.twig',{'progress': dateProgress(period.dateFrom,period.dateTo)})}}
 								</td>
 								<td>
-									<a data-toggle="tooltip" data-placement="bottom" class="btn btn-info btn-sm" title="Zobacz" href="{{ path('period_show', {'id': period.id}) }}">
-										Zobacz
-										<i class="ml-2 mdi mdi-eye"></i>
-									</a>
-									<a data-toggle="tooltip" data-placement="bottom" class="btn btn-warning btn-sm" title="Edytuj" href="{{ path('period_edit', {'id': period.id}) }}">
-										Edytuj
-										<i class="ml-2 mdi mdi-grease-pencil"></i>
-									</a>
-									{{ include('period/_delete_form.html.twig') }}
+									{{ include('parts/form/action_buttons/_show_action.html.twig', {
+                                        'path': path('period_show', {'id': period.id}) 
+                                    })}}
+									{{ include('parts/form/action_buttons/_edit_action.html.twig', {
+                                        'path': path('period_edit', {'id': period.id}) 
+                                    })}}
+									{{ include('parts/form/action_buttons/_delete_action.html.twig', {
+                                        'path': path('period_delete', {'id': period.id}), 
+                                        'token': csrf_token('delete' ~ period.id) 
+                                    })}}
 								</td>
 							</tr>
 						{% else %}
