@@ -1,11 +1,9 @@
-{% extends 'period/period_base.html.twig' %}
+{% extends 'period/_base.html.twig' %}
 
-{% block title %}Nowy okres rozliczeniowy
-{% endblock %}
-{% block page_title %}
-	Nowy okres rozliczeniowy
-{% endblock %}
 {% block content %}
-
-	{{ include('period/_form.html.twig') }}
+	{{ include('parts/form/primary_form.html.twig',{
+        'title': "Utwórz okres rozliczeniowy",
+        'form':form,
+        'index_path':path('period_index')
+    })}}
 {% endblock %}

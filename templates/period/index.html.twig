@@ -1,7 +1,5 @@
-{% extends 'period/period_base.html.twig' %}
+{% extends 'period/_base.html.twig' %}
 
-{% block title %}Okresy rozliczeniowe
-{% endblock %}
 
 {% block content %}
 
@@ -31,13 +29,13 @@
 									{{ include('parts/elements/_progress_bar.html.twig',{'progress': dateProgress(period.dateFrom,period.dateTo)})}}
 								</td>
 								<td>
-									{{ include('parts/form/action_buttons/_show_action.html.twig', {
+									{{ include('parts/table/buttons/_show_action.html.twig', {
                                         'path': path('period_show', {'id': period.id}) 
                                     })}}
-									{{ include('parts/form/action_buttons/_edit_action.html.twig', {
+									{{ include('parts/table/buttons/_edit_action.html.twig', {
                                         'path': path('period_edit', {'id': period.id}) 
                                     })}}
-									{{ include('parts/form/action_buttons/_delete_action.html.twig', {
+									{{ include('parts/table/buttons/_delete_action.html.twig', {
                                         'path': path('period_delete', {'id': period.id}), 
                                         'token': csrf_token('delete' ~ period.id) 
                                     })}}

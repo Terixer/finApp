@@ -1,11 +1,5 @@
-{% extends 'period/period_base.html.twig' %}
+{% extends 'period/_base.html.twig' %}
 
-{% block title %}
-	Okres rozliczeniowy
-{% endblock %}
-{% block page_title %}
-	Okres rozliczeniowy
-{% endblock %}
 {% block content %}
 	<div class="row">
 		<div class="col-lg-6 grid-margin stretch-card">
@@ -14,7 +8,6 @@
 					<h4 class="card-title">Podgląd</h4>
 					<table class="table table-striped">
 						<tbody>
-
 							<tr>
 								<th>#</th>
 								<td>{{ period.id }}</td>

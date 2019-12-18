@@ -1,15 +1,9 @@
-{% extends 'period/period_base.html.twig' %}
-
-{% block title %}Edytuj okres rozliczeniowy
-{% endblock %}
-{% block page_title %}
-	Edytuj okres rozliczneiowy -
-	<span class="text-info">
-		#{{period.id}}
-		"{{period.name}}"
-	</span>
-{% endblock %}
+{% extends 'period/_base.html.twig' %}
 
 {% block content %}
-	{{ include('period/_form.html.twig', {'button_label': 'Update'}) }}
+	{{ include('parts/form/primary_form.html.twig',{
+        'title': "Edytuj okres rozliczeniowy",
+        'form':form,
+        'index_path':path('period_index')
+    })}}
 {% endblock %}
