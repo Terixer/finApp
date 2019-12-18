@@ -1,43 +1,60 @@
 {% extends 'period/period_base.html.twig' %}
 
-{% block title %}Okres rozliczeniowy
+{% block title %}
+	Okres rozliczeniowy
 {% endblock %}
 {% block page_title %}
-	<span class="text-warning">Podgląd</span>
-	-
-	{{parent()}}
-	-
-	<span class="text-primary">#{{period.id}}
-		"{{period.name}}"</span>
+	Okres rozliczeniowy
 {% endblock %}
 {% block content %}
-	<table class="table">
-		<tbody>
-			<tr>
-				<th>CreatedAt</th>
-				<td>{{ period.createdAt ? period.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-			</tr>
-			<tr>
-				<th>Id</th>
-				<td>{{ period.id }}</td>
-			</tr>
-			<tr>
-				<th>Name</th>
-				<td>{{ period.name }}</td>
-			</tr>
-			<tr>
-				<th>DateFrom</th>
-				<td>{{ period.dateFrom ? period.dateFrom|date('Y-m-d H:i:s') : '' }}</td>
-			</tr>
-			<tr>
-				<th>DateTo</th>
-				<td>{{ period.dateTo ? period.dateTo|date('Y-m-d H:i:s') : '' }}</td>
-			</tr>
-		</tbody>
-	</table>
+	<div class="row">
+		<div class="col-lg-6 grid-margin stretch-card">
+			<div class="card">
+				<div class="card-body">
+					<h4 class="card-title">Podgląd</h4>
+					<table class="table table-striped">
+						<tbody>
 
-	<a href="{{ path('period_index') }}">back to list</a>
+							<tr>
+								<th>#</th>
+								<td>{{ period.id }}</td>
+							</tr>
+							<tr>
+								<th>Nazwa</th>
+								<td>{{ period.name }}</td>
+							</tr>
+							<tr>
+								<th>Okres od</th>
+								<td>{{ period.dateFrom ? period.dateFrom|date('Y-m-d H:i:s') : '' }}</td>
+							</tr>
+							<tr>
+								<th>Okres do</th>
+								<td>{{ period.dateTo ? period.dateTo|date('Y-m-d H:i:s') : '' }}</td>
+							</tr>
+							<tr>
+								<th>Utowrzono dnia:</th>
+								<td>{{ period.createdAt ? period.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+							</tr>
+							<tr>
+								<th>Utworzono przez:</th>
+								<td>{{ period.createdBy.email }}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6 grid-margin stretch-card">
+			<div class="card">
+				<div class="card-body">
+					<h4 class="card-title">Statystyki</h4>
+				</div>
+			</div>
+		</div>
+	</div>
 
-	<a href="{{ path('period_edit', {'id': period.id}) }}">edit</a>
+
+	<a href="{{path('period_index')}}" class="btn btn-light">Wróć do listy</a>
+	<a href="{{ path('period_edit', {'id': period.id}) }}" class="btn btn-info">Edytuj</a>
 
 {% endblock %}

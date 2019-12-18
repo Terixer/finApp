@@ -1,13 +1,15 @@
 {% set progressColor = '' %}
 {% if progress < 20 %}
-    {% set progressColor = 'warning' %}
+	{% set progressColor = 'warning' %}
 {% elseif progress >= 20 and progress < 60 %}
-    {% set progressColor = 'info' %}
+	{% set progressColor = 'info' %}
 {% elseif progress >= 60 and progress < 100 %}
-    {% set progressColor = 'primary' %}
+	{% set progressColor = 'primary' %}
 {% else %}
-    {% set progressColor = 'success' %}
+	{% set progressColor = 'success' %}
 {% endif %}
- <div class="{% if progress == 0 %} bg-danger {% endif %} progress" data-toggle="tooltip" data-placement="bottom" title="{{progress}}%">
-    <div  class="progress-bar bg-{{progressColor}}" role="progressbar" style="width: {{progress}}%"></div>
+<div class="progress" data-toggle="tooltip" data-placement="bottom" title="{{progress}}%" style="height:20px">
+	<div class="progress-bar bg-{{progressColor}} progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{progress}}%">
+		{{progress}}%
+	</div>
 </div>

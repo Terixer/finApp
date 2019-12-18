@@ -1,7 +1,9 @@
-<form class="action-item-form" method="post" action="{{ path('period_delete', {'id': period.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+{% set confirm_message = "Czy na pewno chcesz usunąć ten rekord?" %}
+<form class="action-item-form" method="post" action="{{ path('period_delete', {'id': period.id}) }}" onsubmit="return confirm('{{confirm_message}}');">
 	<input type="hidden" name="_method" value="DELETE">
 	<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ period.id) }}">
-	<button data-toggle="tooltip" data-placement="bottom" class="btn btn-link action-icon action-delete-icon" title="Usuń">
-		<i class="mdi mdi-calendar-remove"></i>
-	</button>
+	<button data-toggle="tooltip" data-placement="bottom" class="btn btn-danger btn-sm" title="Usuń">
+		Usuń
+		<i class="ml-2 mdi mdi-calendar-remove"></i>
+	</bottom>
 </form>

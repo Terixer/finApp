@@ -31,11 +31,13 @@
 									{{ include('parts/_progress_bar.html.twig', {'progress': dateProgress(period.dateFrom,period.dateTo)}) }}
 								</td>
 								<td>
-									<a data-toggle="tooltip" data-placement="bottom" class="action-icon action-show-icon" title="Zobacz" href="{{ path('period_show', {'id': period.id}) }}">
-										<i class="mdi mdi-eye"></i>
+									<a data-toggle="tooltip" data-placement="bottom" class="btn btn-info btn-sm" title="Zobacz" href="{{ path('period_show', {'id': period.id}) }}">
+										Zobacz
+										<i class="ml-2 mdi mdi-eye"></i>
 									</a>
-									<a data-toggle="tooltip" data-placement="bottom" class="action-icon action-edit-icon" title="Edytuj" href="{{ path('period_edit', {'id': period.id}) }}">
-										<i class="mdi mdi-grease-pencil"></i>
+									<a data-toggle="tooltip" data-placement="bottom" class="btn btn-warning btn-sm" title="Edytuj" href="{{ path('period_edit', {'id': period.id}) }}">
+										Edytuj
+										<i class="ml-2 mdi mdi-grease-pencil"></i>
 									</a>
 									{{ include('period/_delete_form.html.twig') }}
 								</td>

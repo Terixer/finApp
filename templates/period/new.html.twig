@@ -1,11 +1,11 @@
 {% extends 'period/period_base.html.twig' %}
 
-{% block title %}Nowy okres rozliczeniowy{% endblock %}
+{% block title %}Nowy okres rozliczeniowy
+{% endblock %}
 {% block page_title %}
-   <span class="text-success">Tworzenie</span> - {{parent()}}
+	Nowy okres rozliczeniowy
 {% endblock %}
 {% block content %}
-    {{ include('period/_form.html.twig') }}
 
-    <a href="{{ path('period_index') }}">Lista okresów rozliczeniowych</a>
+	{{ include('period/_form.html.twig') }}
 {% endblock %}
