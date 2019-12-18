@@ -1,38 +1,43 @@
 {% extends 'period/period_base.html.twig' %}
 
-{% block title %}Okres rozliczeniowy{% endblock %}
+{% block title %}Okres rozliczeniowy
+{% endblock %}
 {% block page_title %}
-   <span class="text-warning">Podgląd</span> - {{parent()}} - <span class="text-primary">#{{period.id}} "{{period.name}}"</span>
+	<span class="text-warning">Podgląd</span>
+	-
+	{{parent()}}
+	-
+	<span class="text-primary">#{{period.id}}
+		"{{period.name}}"</span>
 {% endblock %}
 {% block content %}
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ period.createdAt ? period.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Id</th>
-                <td>{{ period.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ period.name }}</td>
-            </tr>
-            <tr>
-                <th>DateFrom</th>
-                <td>{{ period.dateFrom ? period.dateFrom|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>DateTo</th>
-                <td>{{ period.dateTo ? period.dateTo|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>CreatedAt</th>
+				<td>{{ period.createdAt ? period.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+			</tr>
+			<tr>
+				<th>Id</th>
+				<td>{{ period.id }}</td>
+			</tr>
+			<tr>
+				<th>Name</th>
+				<td>{{ period.name }}</td>
+			</tr>
+			<tr>
+				<th>DateFrom</th>
+				<td>{{ period.dateFrom ? period.dateFrom|date('Y-m-d H:i:s') : '' }}</td>
+			</tr>
+			<tr>
+				<th>DateTo</th>
+				<td>{{ period.dateTo ? period.dateTo|date('Y-m-d H:i:s') : '' }}</td>
+			</tr>
+		</tbody>
+	</table>
 
-    <a href="{{ path('period_index') }}">back to list</a>
+	<a href="{{ path('period_index') }}">back to list</a>
 
-    <a href="{{ path('period_edit', {'id': period.id}) }}">edit</a>
+	<a href="{{ path('period_edit', {'id': period.id}) }}">edit</a>
 
-    {{ include('period/_delete_form.html.twig') }}
 {% endblock %}
