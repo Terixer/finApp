@@ -1,0 +1,47 @@
+{% extends 'dictionary/_base.html.twig' %}
+
+
+{% block content %}
+	{% embed('parts/elements/_card.html.twig') %}
+		{% block grid %}
+			col-lg-6
+		{% endblock %}
+		{% block card_content %}
+			{{ include('parts/table/buttons/_add_action.html.twig', {
+                'path': path("dictionary_" ~ dictionary_name ~ "_new")
+            })}}
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Nazwa</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for dictionary_element in dictionary %}
+						<tr>
+							<td>{{ dictionary_element.id }}</td>
+							<td>{{ dictionary_element.name }}</td>
+							<td>
+								{{ include('parts/table/buttons/_show_action.html.twig', {
+                                'path': path("dictionary_" ~ dictionary_name ~ "_show", {'id': dictionary_element.id}) 
+                            })}}
+								{{ include('parts/table/buttons/_edit_action.html.twig', {
+                                'path': path("dictionary_" ~ dictionary_name ~ "_edit", {'id': dictionary_element.id}) 
+                            })}}
+								{{ include('parts/table/buttons/_delete_action.html.twig', {
+                                'path': path("dictionary_" ~ dictionary_name ~ "_delete", {'id': dictionary_element.id}), 
+                                'token': csrf_token('delete' ~ dictionary_element.id) 
+                            })}}
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="6">Brak elementów</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		{% endblock %}
+	{% endembed %}
+{% endblock %}

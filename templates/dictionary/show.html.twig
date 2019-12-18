@@ -1,0 +1,31 @@
+{% extends 'dictionary/_base.html.twig' %}
+
+{% block content %}
+	<div class="row">
+		{% embed('parts/elements/_card.html.twig') %}
+			{% block grid %}
+				col-lg-6
+			{% endblock %}
+			{% block card_title %}
+				Przegląd
+				{{dictionary_title}}
+			{% endblock %}
+			{% block card_content %}
+				<table class="table table-striped">
+					<tbody>
+						<tr>
+							<th>#</th>
+							<td>{{ dictionary_element.id }}</td>
+						</tr>
+						<tr>
+							<th>Nazwa</th>
+							<td>{{ dictionary_element.name }}</td>
+						</tr>
+					</tbody>
+				</table>
+			{% endblock %}
+		{% endembed %}
+	</div>
+
+	{{ include('parts/form/buttons/_back.html.twig',{'path':path("dictionary_" ~ dictionary_name ~ "_index")})}}
+{% endblock %}
