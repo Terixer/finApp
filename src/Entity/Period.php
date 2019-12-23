@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -30,6 +32,16 @@ class Period extends BaseEntity
      * @ORM\Column(type="datetime")
      */
     private $dateTo;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Income", mappedBy="period")
+     */
+    private $incomes;
+
+    public function __construct()
+    {
+        $this->incomes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -68,6 +80,42 @@ class Period extends BaseEntity
     public function setDateTo(\DateTimeInterface $dateTo): self
     {
         $this->dateTo = $dateTo;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
+    /**
+     * @return Collection|Income[]
+     */
+    public function getIncomes(): Collection
+    {
+        return $this->incomes;
+    }
+
+    public function addIncome(Income $income): self
+    {
+        if (!$this->incomes->contains($income)) {
+            $this->incomes[] = $income;
+            $income->setPeriod($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIncome(Income $income): self
+    {
+        if ($this->incomes->contains($income)) {
+            $this->incomes->removeElement($income);
+            // set the owning side to null (unless already changed)
+            if ($income->getPeriod() === $this) {
+                $income->setPeriod(null);
+            }
+        }
 
         return $this;
     }
