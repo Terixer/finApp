@@ -2,42 +2,34 @@
 
 namespace App\Form;
 
-use App\Entity\Income;
+use App\Entity\Dictionary\ExpenseType;
 use App\Entity\Period;
-use Proxies\__CG__\App\Entity\Dictionary\IncomeType;
+use App\Entity\PlannedExpense;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class IncomeForm extends AbstractType
+class PlannedExpenseForm extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add(
-                'plannedValue',
+                'value',
                 MoneyType::class,
                 [
-                    'label' => 'Planowany wydatek',
+                    'label' => 'Wartość',
                     'currency' => 'PLN'
                 ]
             )
             ->add(
-                'realValue',
-                MoneyType::class,
-                [
-                    'label' => 'Realny wydatek',
-                    'currency' => 'PLN'
-                ]
-            )
-            ->add(
-                'incomeType',
+                'expenseType',
                 EntityType::class,
                 [
-                    'class' => IncomeType::class,
-                    'label' => 'Typ przychodów',
+                    'class' => ExpenseType::class,
+                    'label' => 'Typ wydatków',
                 ]
             )
             ->add(
@@ -45,7 +37,7 @@ class IncomeForm extends AbstractType
                 EntityType::class,
                 [
                     'class' => Period::class,
-                    'label' => 'Okres'
+                    'label' => 'Okres',
                 ]
             );
     }
@@ -53,7 +45,7 @@ class IncomeForm extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Income::class,
+            'data_class' => PlannedExpense::class,
         ]);
     }
 }
