@@ -1,0 +1,9 @@
+{% extends 'plannedExpense/_base.html.twig' %}
+
+{% block content %}
+	{{ include('parts/form/primary_form.html.twig',{
+        'title': "Utwórz planowany wydatek",
+        'form':form,
+        'index_path':path('plannedExpense_index')
+    })}}
+{% endblock %}

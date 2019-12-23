@@ -38,9 +38,15 @@ class Period extends BaseEntity
      */
     private $incomes;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\PlannedExpense", mappedBy="period")
+     */
+    private $plannedExpenses;
+
     public function __construct()
     {
         $this->incomes = new ArrayCollection();
+        $this->plannedExpenses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -114,6 +120,37 @@ class Period extends BaseEntity
             // set the owning side to null (unless already changed)
             if ($income->getPeriod() === $this) {
                 $income->setPeriod(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|PlannedExpense[]
+     */
+    public function getPlannedExpenses(): Collection
+    {
+        return $this->plannedExpenses;
+    }
+
+    public function addPlannedExpense(PlannedExpense $plannedExpense): self
+    {
+        if (!$this->plannedExpenses->contains($plannedExpense)) {
+            $this->plannedExpenses[] = $plannedExpense;
+            $plannedExpense->setPeriod($this);
+        }
+
+        return $this;
+    }
+
+    public function removePlannedExpense(PlannedExpense $plannedExpense): self
+    {
+        if ($this->plannedExpenses->contains($plannedExpense)) {
+            $this->plannedExpenses->removeElement($plannedExpense);
+            // set the owning side to null (unless already changed)
+            if ($plannedExpense->getPeriod() === $this) {
+                $plannedExpense->setPeriod(null);
             }
         }
 

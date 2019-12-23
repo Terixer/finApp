@@ -1,0 +1,38 @@
+{% extends 'plannedExpense/_base.html.twig' %}
+
+{% block content %}
+	<div class="row">
+		{% embed('parts/elements/_card.html.twig') %}
+			{% block grid %}
+				col-lg-8
+			{% endblock %}
+			{% block card_title %}
+				Przegląd planowanego wydaku
+			{% endblock %}
+			{% block card_content %}
+				<table class="table table-striped">
+					<tbody>
+						<tr>
+							<th>#</th>
+							<td>{{ plannedExpense.id }}</td>
+						</tr>
+						<tr>
+							<th>Wartość</th>
+							<td>{{ plannedExpense.value }}</td>
+						</tr>
+						<tr>
+							<th>Okres</th>
+							<td>{{ plannedExpense.period }}</td>
+						</tr>
+						<tr>
+							<th>Typ wydatku</th>
+							<td>{{ plannedExpense.expenseType }}</td>
+						</tr>
+					</tbody>
+				</table>
+			{% endblock %}
+		{% endembed %}
+	</div>
+
+	{{ include('parts/form/buttons/_back.html.twig',{'path':path('plannedExpense_index')})}}
+{% endblock %}
