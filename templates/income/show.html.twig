@@ -1,0 +1,52 @@
+{% extends 'income/_base.html.twig' %}
+
+{% block content %}
+	<div class="row">
+		{% embed('parts/elements/_card.html.twig') %}
+			{% block grid %}
+				col-lg-6
+			{% endblock %}
+			{% block card_title %}
+				Przegląd przychodu
+			{% endblock %}
+			{% block card_content %}
+				<table class="table table-striped">
+					<tbody>
+						<tr>
+							<th>#</th>
+							<td>{{ income.id }}</td>
+						</tr>
+						<tr>
+							<th>PLanowana wartość</th>
+							<td>{{ income.plannedValue }}</td>
+						</tr>
+						<tr>
+							<th>Realna wartość</th>
+							<td>{{ income.realValue }}</td>
+						</tr>
+						<tr>
+							<th>Typ przychodu</th>
+							<td>{{ income.incomeType }}</td>
+						</tr>
+						<tr>
+							<th>Okres</th>
+							<td>{{ income.period }}</td>
+						</tr>
+
+					</tbody>
+				</table>
+			{% endblock %}
+		{% endembed %}
+		{% embed('parts/elements/_card.html.twig') %}
+			{% block grid %}
+				col-lg-6
+			{% endblock %}
+			{% block card_title %}
+				Statystyki
+			{% endblock %}
+			{% block card_content %}{% endblock %}
+		{% endembed %}
+	</div>
+
+	{{ include('parts/form/buttons/_back.html.twig',{'path':path('income_index')})}}
+{% endblock %}

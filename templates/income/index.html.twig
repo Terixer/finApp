@@ -1,0 +1,53 @@
+{% extends 'income/_base.html.twig' %}
+
+{% block content %}
+	{% embed('parts/elements/_card.html.twig') %}
+		{% block grid %}
+			col-lg-12
+		{% endblock %}
+		{% block card_content %}
+			{{ include('parts/table/buttons/_add_action.html.twig', {
+                'path': path('income_new')
+            })}}
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Planowana wartość</th>
+						<th>Realna wartość</th>
+						<th>Typ przychodu</th>
+						<th>Okres</th>
+						<th style="width:20%">Akcje</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for income in incomes %}
+						<tr>
+							<td>{{ income.id }}</td>
+							<td>{{ income.plannedValue |number_format(2, '.', ' ') }}</td>
+							<td>{{ income.realValue |number_format(2, '.', ' ') }}</td>
+							<td>{{ income.incomeType }}</td>
+							<td>{{ income.period }}</td>
+							<td>
+								{{ include('parts/table/buttons/_show_action.html.twig', {
+                                'path': path('income_show', {'id': income.id}) 
+                            })}}
+								{{ include('parts/table/buttons/_edit_action.html.twig', {
+                                'path': path('income_edit', {'id': income.id}) 
+                            })}}
+								{{ include('parts/table/buttons/_delete_action.html.twig', {
+                                'path': path('income_delete', {'id': income.id}), 
+                                'token': csrf_token('delete' ~ income.id) 
+                            })}}
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="6">Brak okresów rozliczeniowych</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		{% endblock %}
+	{% endembed %}
+{% endblock %}

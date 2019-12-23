@@ -1,0 +1,9 @@
+{% extends 'income/_base.html.twig' %}
+
+{% block content %}
+	{{ include('parts/form/primary_form.html.twig',{
+        'title': "Edytuj przychód",
+        'form':form,
+        'index_path':path('income_index')
+    })}}
+{% endblock %}
