@@ -1,0 +1,63 @@
+{% extends 'goal/_base.html.twig' %}
+
+
+{% block content %}
+	<div class="row">
+		{% embed('parts/elements/_card.html.twig') %}
+			{% block grid %}
+				col-lg-6
+			{% endblock %}
+			{% block card_content %}
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Procent</th>
+							<th>Data obowiązywania</th>
+							<th>Akcje</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for single_goal in goals %}
+							<tr>
+								<td>{{ single_goal.id }}</td>
+								<td>{{ single_goal.percentage }}</td>
+								<td>{{ single_goal.effectiveDate|date('Y-m-d  h:i') }}</td>
+								<td>{{ include('parts/table/buttons/_delete_action.html.twig', {
+                                'path': path("goal_delete", {'id': single_goal.id}), 
+                                'token': csrf_token('delete' ~ single_goal.id)
+                       			 })}}
+								</td>
+							</tr>
+						{% else %}
+							<tr>
+								<td colspan="6">Brak celów</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			{% endblock %}
+		{% endembed %}
+		{% embed('parts/elements/_card.html.twig') %}
+			{% block grid %}col-lg-6
+			{% endblock %}
+			{% block card_title %}Statystyki
+			{% endblock %}
+			{% block card_content %}{% endblock %}
+		{% endembed %}
+		{% embed('parts/elements/_card.html.twig') %}
+			{% block grid %}col-lg-6
+			{% endblock %}
+			{% block card_title %}Nowy cel
+			{% endblock %}
+			{% block card_content %}
+				<div class="alert alert-info" role="alert">
+					Cel zostanie wdrożony do nowych wydatków zaraz po jego dodaniu.
+				</div>
+				{{ include('parts/form/simple_form.html.twig',{
+					'form':form
+				})}}
+			{% endblock %}
+		{% endembed %}
+	</div>
+{% endblock %}
